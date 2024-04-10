@@ -6,22 +6,20 @@ import { setContext } from "@apollo/client/link/context";
 
 import type { KeyValueCache } from '@apollo/utils.keyvaluecache';
 
-interface DataSourceConfig<TContext> {
-    context: TContext;
-    cache: KeyValueCache;
-}
-
 export interface GraphQLResponse<T> {
     data?: T;
     errors?: GraphQLError[];
 }
 
+export interface DataSourceConfig {
+    baseURL: string
+}
+
 export class GraphQLDataSource<TContext = any> {
     public baseURL!: string;
-    public context!: TContext;
 
-    public initialize(config: DataSourceConfig<TContext>): void {
-        this.context = config.context;
+    constructor(config?: DataSourceConfig) {
+        this.baseURL = config?.baseURL
     }
 
     async query(query: DocumentNode) {
@@ -34,9 +32,7 @@ export class GraphQLDataSource<TContext = any> {
         }
     }
 
-    public async execute<T>(
-        operation: GraphQLRequest
-    ): Promise<GraphQLResponse<T>> {
+    public async execute<T>(operation: GraphQLRequest): Promise<GraphQLResponse<T>> {
         return this.executeSingleOperation(operation) as Promise<
             GraphQLResponse<T>
         >;
@@ -44,9 +40,8 @@ export class GraphQLDataSource<TContext = any> {
 
     private async executeSingleOperation(operation: GraphQLRequest) {
         const link = this.composeLinks();
-
         const response = await toPromise(execute(link, operation));
-
+        
         if (response.errors) {
             this.didEncounterError(response.errors);
         }

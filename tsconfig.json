@@ -1,12 +1,25 @@
 {
-    "compilerOptions": {
-      "rootDirs": ["src"],
-      "outDir": "dist",
-      "lib": ["es2020"],
-      "target": "es2020",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "types": ["node"]
-    }
-  }
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "target": "esnext",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "declaration": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "DOM"
+    ],
+    "types": [
+      "node"
+    ],
+    "baseUrl": "."
+  },
+  "include": ["src/**/*"],
+  "exclude": ["codegen.ts", "dist"]
+}

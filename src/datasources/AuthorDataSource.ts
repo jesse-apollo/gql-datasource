@@ -12,7 +12,7 @@ export class AuthorDataSource extends GraphQLDataSource {
           if (errors) {
             throw new Error(errors.map((error) => error.message).join("\n"));
           }
-          return data;
+          return data.authors;
         });
       }
 
