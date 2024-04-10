@@ -1,7 +1,7 @@
 import { GET_AUTHORS, GET_BOOKS } from "./schemas/operations";
 import { GetAuthorsQuery, GetBooksQuery } from "./schemas/types/graphql";
 import { GraphQLDataSource } from "./GraphQLDataSource";
-import { GraphQLRequest } from  "@apollo/client/core";
+import { GraphQLRequest } from "@apollo/client/core";
 
 export class AuthorDataSource extends GraphQLDataSource {
 
@@ -34,7 +34,6 @@ export class AuthorDataSource extends GraphQLDataSource {
       request.headers = {};
     }
     request.headers["x-api-key"] = "this is my key";
-
   }
 
 }
