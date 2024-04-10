@@ -13,22 +13,22 @@ import { resolvers } from './resolvers'
 const schema = gql(fs.readFileSync(path.resolve(__dirname, "./schema.graphql"), 'utf8'));
 
 async function startApolloServer() {
-const server = new ApolloServer({
-    schema: buildSubgraphSchema([{ typeDefs: schema, resolvers }])
-});
+    const server = new ApolloServer({
+        schema: buildSubgraphSchema([{ typeDefs: schema, resolvers }])
+    });
 
-const PORT = process.env.PORT || 8080;
+    const PORT = process.env.PORT || 8080;
 
-const { url } = await startStandaloneServer(server, {
-    context: async () => {
-        return {
-            dataSources: {
-                authorDS: new AuthorDataSource({baseURL:"https://router-wn3vwa6nlq-ue.a.run.app"}),
-            },
-        };
-    },
-});
+    const { url } = await startStandaloneServer(server, {
+        context: async () => {
+            return {
+                dataSources: {
+                    authorDS: new AuthorDataSource({ baseURL: "https://router-wn3vwa6nlq-ue.a.run.app" }),
+                },
+            };
+        },
+    });
 
-console.log(`🚀  Server ready at: ${url}`);
+    console.log(`🚀  Server ready at: ${url}`);
 }
 startApolloServer();
