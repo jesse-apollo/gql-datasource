@@ -1,0 +1,28 @@
+{
+  "name": "gql-datasource",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/src/index.js",
+    "generate": "graphql-codegen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@apollo/client": "^3.9.10",
+    "@apollo/server": "^4.10.2",
+    "@apollo/subgraph": "^2.7.2",
+    "graphql": "^16.8.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.2.5",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.4"
+  }
+}
