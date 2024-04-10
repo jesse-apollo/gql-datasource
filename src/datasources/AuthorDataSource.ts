@@ -1,5 +1,5 @@
-import { GET_AUTHORS } from "./operations";
-import { GetAuthorsQuery } from "./types/graphql";
+import { GET_AUTHORS } from "./schemas/operations";
+import { GetAuthorsQuery } from "./schemas/types/graphql";
 import { GraphQLDataSource } from "./GraphQLDataSource";
 
 export class AuthorDataSource extends GraphQLDataSource {

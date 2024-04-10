@@ -101,7 +101,7 @@ export type Purchase = {
 export type Query = {
   __typename?: 'Query';
   /**  Get a list of authors. In REST this might be: /api/v1/authors?filter=&sort=  */
-  authors: Array<Author>;
+  authors?: Maybe<Array<Maybe<Author>>>;
   /**  Get a list of literary awards. */
   awards?: Maybe<Array<Maybe<Award>>>;
   /**  Get a list of books.  */
@@ -109,16 +109,10 @@ export type Query = {
   purchases?: Maybe<Array<Maybe<Purchase>>>;
 };
 
-
-export type QueryAuthorsArgs = {
-  filter?: InputMaybe<Scalars['String']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type GetAuthorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAuthorsQuery = { __typename?: 'Query', authors: Array<{ __typename?: 'Author', name: string, biography?: string | null }> };
+export type GetAuthorsQuery = { __typename?: 'Query', authors?: Array<{ __typename?: 'Author', name: string, biography?: string | null } | null> | null };
 
 
 export const GetAuthorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAuthors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"biography"}}]}}]}}]} as unknown as DocumentNode<GetAuthorsQuery, GetAuthorsQueryVariables>;
