@@ -7,3 +7,10 @@ query GetAuthors {
     biography
   }
 }`
+
+export const GET_BOOKS = gql`
+query GetBooks {
+  books {
+    title
+  }
+}`
